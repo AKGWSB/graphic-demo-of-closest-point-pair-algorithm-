@@ -38,20 +38,24 @@ class point:
         self.x = x
         self.y = y
 
+# 两点x距离
 def cmpx(p1, p2):
     if(p1.x==p2.x):
         return (p1.y<p2.y)
     return (p1.x<p2.x)
 
+# y升序比较函数
 def cmpy(p1, p2):
     return (p1.y<p2.y)
 
+# x升序比较函数
 def getPseq():
     seq = []
     for p in points:
         seq += plt.plot(p.x, p.y, "o")
     return seq
 
+# 排序，需要选择比较函数
 def sort(points, cmp):
     n = points.__len__()
     for i in range(n):
@@ -59,9 +63,11 @@ def sort(points, cmp):
             if cmp(points[j], points[j+1]) == False:
                 points[j],points[j+1] = points[j+1], points[j]
 
+# 两点距离
 def dis(p1, p2):
     return math.sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y))
 
+# 根据坐标在frame帧上绘制矩形
 def getRectangle(frame, x1, y1, x2, y2, c):
     frame += plt.plot([x1, x2], [y1, y1], color=c)
     frame += plt.plot([x1, x2], [y2, y2], color=c)
@@ -69,11 +75,13 @@ def getRectangle(frame, x1, y1, x2, y2, c):
     frame += plt.plot([x2, x2], [y1, y2], color=c)
     return frame
 
+# 根据点数组points在frame帧上绘制点
 def getPoints(frame, points):
     for p in points:
         frame += plt.plot(p.x, p.y, "o")
     return frame
 
+# 根据points的顺序在frame帧上绘制箭头表示排序顺序
 def getQuiver(frame, points, l, r, c):
     for i in range(l,r,1):
         dx = points[i + 1].x - points[i].x
@@ -86,6 +94,20 @@ artists = []
 stack = []
 colors = ['red', 'green', 'blue', 'black', 'yellow']
 
+
+'''
+function closest points 
+
+param points : the array(list) of points
+param l      : the left boundary of the sub array
+param r      : the right boundary of the sub array
+dep          : the depth of recursive tree,for graphic print
+
+param points : 点的数组
+param l      : 当前区间在数组中的左边界
+param r      : 当前区间在数组中的右边界
+dep          : 递归树深度，方便打印图形和递归路径
+'''
 def cp(points, l, r, dep):
     if l>=r :
         return 1145141919.810
