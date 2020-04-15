@@ -5,3 +5,5 @@ A graphic demo of the 'closest point pair' algorithm
 
 效果如下:
 
+![image](https://raw.githubusercontent.com/AKGWSB/graphic-demo-of-closest-point-pair-algorithm-/master/demo.gif)
+
